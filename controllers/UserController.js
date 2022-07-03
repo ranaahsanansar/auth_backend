@@ -89,6 +89,11 @@ class UserController {
 
     }
 
+
+    static loggedUser = async(req, res)=>{
+        res.send({"user": req.user});
+    }
+
 }
 
 export default UserController;

@@ -4,6 +4,7 @@ import UserController from '../controllers/UserController.js';
 import userAuthentication from '../middlewares/AuthMiddleware.js';
 
 UserRoutes.use('/changepass' , userAuthentication);
+UserRoutes.use('/loggeduser' , userAuthentication);
 
 
 // UnAuthorized Routes 
@@ -14,6 +15,7 @@ UserRoutes.post('/login' , UserController.userLogin);
 // Authenticated Routes 
 
 UserRoutes.post('/changepass' , UserController.changUserPass);
+UserRoutes.get('/loggeduser' , UserController.loggedUser);
 
 
 export default UserRoutes;
