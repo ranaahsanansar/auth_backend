@@ -25,7 +25,12 @@ class UserController {
                         });
                         // Saving Data into DataBase 
                         await doc.save();
-                        res.status(201).send({ "status": "success", "message": "Registerd Successfull" });
+                        // JWT Tokenization 
+                        const saved_user = await UserModel.findOne({email:email});
+                        // Gentrating JWT Token 
+                        const token = jwt.sign({ userID:saved_user._id} , process.env.JWT_KEY , {expiresIn: '5d'});
+
+                        res.status(201).send({ "status": "success", "message": "Registerd Successfull" , "token": token });
                     } catch (error) {
                         res.send({ "status": "failed", "message": "Not save DataBase Error!" });
                     }
@@ -39,7 +44,6 @@ class UserController {
     }
 
     // User Login Functionlity 
-
     static userLogin = async (req , res) =>{
         try {
             const {email , password } = req.body;
@@ -48,7 +52,10 @@ class UserController {
                 if(user != null){
                     const isMatch = await bcrypt.compare(password , user.password);
                     if(user.email === email && isMatch){
-                        res.send({ "status": "Success", "message": "User Login Succes!" });
+                        const token = jwt.sign({ userID:user} , process.env.JWT_KEY , {expiresIn: '5d'});
+
+                        res.status(201).send({ "status": "success", "message": "User Login Succes!" , "token": token });
+
                     }else{
                         res.send({ "status": "failed", "message": "Incorrect Password!" });
                     }
