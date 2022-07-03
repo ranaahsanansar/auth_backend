@@ -11,6 +11,7 @@ UserRoutes.use('/loggeduser' , userAuthentication);
 
 UserRoutes.post('/register' , UserController.userRegistration);
 UserRoutes.post('/login' , UserController.userLogin);
+UserRoutes.post('/send-reset-password-email' , UserController.sendResetPasswordEmail);
 
 // Authenticated Routes 
 

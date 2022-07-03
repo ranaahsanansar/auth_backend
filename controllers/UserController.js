@@ -94,6 +94,44 @@ class UserController {
         res.send({"user": req.user});
     }
 
+    static sendResetPasswordEmail = async (req ,res )=>{
+        const {email} = req.body;
+        if (email){
+            const user = await UserModel.findOne({email:email});
+            
+
+            if(user){
+                const Key = user._id + process.env.JWT_KEY;
+                const emailToken = jwt.sign({userID:user._id} , Key, {expiresIn: '15m'});
+                const link = `http://127.0.0.1:3000/api/user/reset/${user._id}/${emailToken}`;
+                console.log(link);
+                res.send({ "status": "success", "message": "Your reset link is send to your email please verify with in 15 mintues!" });
+            }else{
+                res.send({ "status": "failed", "message": "Email does not Exists!" });
+            }
+
+        }else{
+            res.send({ "status": "failed", "message": "Email fields is required!" });
+        }
+    }
+
+    static forgottenPasswordReset = async (req , res)=>{
+        const {password , password_confirmation} = req.body
+        const { id , token } = req.params
+        const user = await UserModel.findById(id);
+        const new_Key = user._id + process.env.JWT_KEY;
+        try {
+            jwt.verify(token , new_Key);
+            if(password && password_confirmation){
+                
+            }else{
+                res.send({ "status": "failed", "message": "All fields are required!" });
+            }
+        } catch (error) {
+            res.send({ "status": "failed", "message": "Invalid Token!" });
+        }
+    }
+
 }
 
 export default UserController;
