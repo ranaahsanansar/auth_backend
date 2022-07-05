@@ -1,6 +1,7 @@
 import UserModel from "../models/UserModel.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import transporter from "../config/emailConfig.js";
 
 class UserController {
     // User Singup Functionality -------------------------------------------
@@ -104,8 +105,14 @@ class UserController {
                 const Key = user._id + process.env.JWT_KEY;
                 const emailToken = jwt.sign({ userID: user._id }, Key, { expiresIn: '15m' });
                 const link = `http://127.0.0.1:3000/api/user/reset/${user._id}/${emailToken}`;
-                console.log(link);
-                res.send({ "status": "success", "message": "Your reset link is send to your email please verify with in 15 mintues!" });
+                // console.log(link);
+                let info = await transporter.sendMail({
+                    from: process.env.EMAIL_FROM,
+                    to: user.email,
+                    subject: "ASN Password Reset Mail",
+                    html: `<a href=${link}>Click Here to Reset Password</a>`
+                })
+                res.send({ "status": "success", "message": "Your reset link is send to your email please verify with in 15 mintues!" , "info": info });
             } else {
                 res.send({ "status": "failed", "message": "Email does not Exists!" });
             }
@@ -126,11 +133,8 @@ class UserController {
             if (password && password_confirmation) {
                 if (password === password_confirmation) {
                     const salt = await bcrypt.genSalt(10);
-                    console.log("1");
                     const resetHashPassword = await bcrypt.hash(password, salt);
-                    console.log("2");
                     await UserModel.findByIdAndUpdate(id, { $set: { password: resetHashPassword } });
-                    console.log("3");
                     res.send({ "status": "success", "message": "Password Reset Success!" });
                 } else {
                     res.send({ "status": "failed", "message": "Password Not matched!" });
