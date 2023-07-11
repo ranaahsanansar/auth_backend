@@ -1,0 +1,308 @@
+{
+	"info": {
+		"_postman_id": "99f8a232-6e12-46ba-a668-869413748aba",
+		"name": "Abdulllah Usman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27578430",
+		"_collection_link": "https://warped-water-831957.postman.co/workspace/Team-Workspace~8b4beed6-22ff-43e9-8e04-84727cc53d0d/collection/27578430-99f8a232-6e12-46ba-a668-869413748aba?action=share&creator=27578430&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Add Vehicle",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGFkNTEzNzE0NWFmZWI0NGIxYzVhOTEiLCJpYXQiOjE2ODkwODAxMTksImV4cCI6MTY4OTUxMjExOX0.RSh3RFD70GcUmMJAYXaYcAJhFwzTp9rBuW2m1bSC5fM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"userId\": \"userID\",\n\"name\": \"name\",\n\"department\": \"department\",\n\"type\": \"type\" ,\n\"rate\": \"rate\" ,\n                \"date\":  \"date\",\n                \"destination\":  \"destination\",\n                \"pickup\": \"pickup\" ,\n                \"reason\": \"reason\" ,\n                \"email\": \"email\" ,\n                \"mobile\": \"mobile\"\n            }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/vehicle/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vehicle",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n                \"name\": \"name\",\n                \"email\": \"email\",\n                \"message\": \"message\"\n            }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/vehicle/send-message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vehicle",
+						"send-message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Vehicle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/vehicle/get",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vehicle",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Vehicle By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/vehicle/get-by-id/64ad51a1145afeb44b1c5a9c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vehicle",
+						"get-by-id",
+						"64ad51a1145afeb44b1c5a9c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Message By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/vehicle/get-message-by-id/64ad5664de479bab6bcc4642",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vehicle",
+						"get-message-by-id",
+						"64ad5664de479bab6bcc4642"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/vehicle/get-all-messages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"vehicle",
+						"get-all-messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Registration Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"name\": \"Abdullah\", \"email\":\"ubu@gmail.com\", \"password\":\"123\", \"password_confirmation\":\"123\", \"tc\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"asn.cs21@gmail.com\",\r\n    \"password\":\"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change User Password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOnsiX2lkIjoiNjQ3ODMwZTRhYWYxZjg1MzU3ZWM0MWM5IiwibmFtZSI6IkFoc2FuMiIsImVtYWlsIjoiYXNuLmNzMTlAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkZlhnVkRIaVBTTlBhWE5YZjdMblNEdW5lM0NaZzMvMkphQzIyUnRURE9hUFpEOGhRY1FNRFMiLCJ0YyI6dHJ1ZSwidmVyaSI6dHJ1ZSwiX192IjowfSwiaWF0IjoxNjg1NTk4NTMwLCJleHAiOjE2ODU1OTkxMzB9.XIxVNDL0iXNvRe-KpCIMnU5_Fwv36DvpkC5tUX4TCYc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\":\"hello\",\r\n    \"password_confirmation\":\"hello\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/user/changepass",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"changepass"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logged User Detail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOnsiX2lkIjoiNjQ3ODMwZTRhYWYxZjg1MzU3ZWM0MWM5IiwibmFtZSI6IkFoc2FuMiIsImVtYWlsIjoiYXNuLmNzMTlAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkZlhnVkRIaVBTTlBhWE5YZjdMblNEdW5lM0NaZzMvMkphQzIyUnRURE9hUFpEOGhRY1FNRFMiLCJ0YyI6dHJ1ZSwidmVyaSI6dHJ1ZSwiX192IjowfSwiaWF0IjoxNjg1NTk4NTMwLCJleHAiOjE2ODU1OTkxMzB9.XIxVNDL0iXNvRe-KpCIMnU5_Fwv36DvpkC5tUX4TCYc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/user/loggeduser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"loggeduser"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
